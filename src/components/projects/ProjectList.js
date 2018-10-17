@@ -1,11 +1,16 @@
 import React from "react";
 import ProjectSummary from "./ProjectSummary";
+import { Link } from "react-router-dom";
 
 const ProjectList = props => {
   const { projects } = props;
-  const projectList = projects.length ? (
+  const projectList = projects ? (
     projects.map(project => {
-      return <ProjectSummary project={project} key={project.id} />;
+      return (
+        <Link to={"/project/" + project.id}>
+          <ProjectSummary project={project} key={project.id} />
+        </Link>
+      );
     })
   ) : (
     <p>No project yet...</p>
